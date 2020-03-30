@@ -8,11 +8,11 @@ using Microsoft.Extensions.Logging;
 
 namespace BlabberApp.Client.Pages
 {
-    public class IndexModel : PageModel
+    public class RegistrationModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
 
-        public IndexModel(ILogger<IndexModel> logger)
+        public RegistrationModel(ILogger<IndexModel> logger)
         {
             _logger = logger;
         }
