@@ -10,15 +10,18 @@ $locations = (
 "./BlabberApp.Domain/obj/",
 "./BlabberApp.DomainTest/obj/",
 "./BlabberApp.DataStoreTest/obj/",
+"./BlabberApp.Services/obj",
 "./BlabberApp.DataStore/bin/",
 "./BlabberApp.DomainTest/bin/",
 "./BlabberApp.Domain/bin/",
 "./BlabberApp.Console/bin/",
 "./BlabberApp.WebApi/bin/",
 "./BlabberApp.Client/bin/",
+"./BlabberApp.Services/bin",
 "./BlabberApp.DataStoreTest/bin/",
 "./BlabberApp.DataStoreTest/TestResults/",
-"./BlabberApp.DomainTest/TestResults/")
+"./BlabberApp.DomainTest/TestResults/",
+"./BlabberApp.ServicesTest/TestResults/")
 
 function purge($path)
 {
