@@ -1,74 +1,62 @@
-﻿using BlabberApp.Domain.Entities;
+﻿using System;
+using System.Collections;
+using BlabberApp.DataStore.Interfaces;
+using BlabberApp.Domain.Entities;
 using BlabberApp.Domain.Interfaces;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
-namespace BlabberApp.DataStore
+namespace BlabberApp.DataStore.Plugins
 {
-    public class InMemory<T> : IRepository<T> where T : BaseEntity
+    public class InMemory : IBlabPlugin, IUserPlugin
     {
-        private ApplicationContext Context;
-        private DbSet<T> _entities; 
-
-        public InMemory(ApplicationContext context)
+        private ArrayList buffer;
+        public InMemory()
         {
-            Context = context;
-            _entities = context.Set<T>();
+            this.buffer = new ArrayList();
         }
 
-        public void Add(T entity)
+        public void Create(IEntity obj)
         {
-            if (entity == null)
+            this.buffer.Add(obj);
+        }
+
+        public IEnumerable ReadAll()
+        {
+            return this.buffer;
+        }
+
+        public IEntity ReadById(Guid Id)
+        {
+            foreach(IEntity obj in this.buffer)
             {
-                throw new ArgumentNullException("entity");
+                if (Id.Equals(obj.Id)) return obj;
             }
-            _entities.Add(entity);
-            Context.SaveChanges();
+            return null;
         }
-
-        public void Remove(T entity)
+        public IEnumerable ReadByUserId(string Id)
         {
-            if (entity == null)
+            return null;
+        }
+        public IEntity ReadByUserEmail(string email)
+        {
+            foreach(User user in buffer)
             {
-                throw new ArgumentNullException("entity");
+                if (user.Email.Equals(email))
+                {
+                    return user;
+                }
             }
-            _entities.Remove(entity);
-            Context.SaveChanges();
-        }
-        
-        public void Update(T entity)
-        {
-            if (entity == null)
-            {
-                throw new ArgumentNullException("entity");
-            }
-            Context.SaveChanges();
+            return null;
         }
 
-        public IEnumerable<T> GetAll()
+        public void Update(IEntity obj)
         {
-            return _entities.AsEnumerable();
+            this.Delete(obj);
+            this.Create(obj);
         }
 
-        public T GetBySysId(string sysId)
+        public void Delete(IEntity obj)
         {
-            if (sysId.Equals(""))
-            {
-                throw new ArgumentNullException("sysId");
-            }
-
-            return _entities.SingleOrDefault(s => s.getSysId() == sysId);
-        }
-
-        public T GetByUserId(string userId)
-        {
-            if ( userId.Equals(""))
-            {
-                throw new ArgumentNullException("userId");
-            }
-            return _entities.Find(userId);
+            this.buffer.Remove(obj);
         }
     }
 }
