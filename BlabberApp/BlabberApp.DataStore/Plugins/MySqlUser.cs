@@ -13,7 +13,7 @@ namespace BlabberApp.DataStore.Plugins
         MySqlConnection _dcUser;
         public MySqlUser()
         {
-            _dcUser = new MySqlConnection("server=;database=;user=;password=");
+            _dcUser = new MySqlConnection("server=142.93.114.73;database=agentdata;user=agentdata;password=letmein");
             try
             {
                 _dcUser.Open();
