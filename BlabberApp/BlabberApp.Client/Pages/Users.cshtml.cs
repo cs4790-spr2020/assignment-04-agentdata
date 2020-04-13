@@ -18,5 +18,21 @@ namespace BlabberApp.Client.Pages
         public void OnGet()
         {
         }
+        public void OnPost()
+        {
+            var email = Request.Form["email"];
+            try
+            {
+                //_service.RemoveUser(email);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.ToString());
+            }
+        }
+        public void removeUser(string email)
+        {
+            _service.RemoveUser(email);
+        }
     }
 }

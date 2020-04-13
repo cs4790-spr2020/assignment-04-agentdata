@@ -21,12 +21,14 @@ namespace BlabberApp.DataStoreTest
         public void TestAddAndGetBlab()
         {
             //Arrange
-            string email = "fooabar@example.com";
+            string email = "jojo@andthecoons.com";
             User mockUser = new User(email);
-            Blab blab = new Blab("Now is the time for, blabs...", mockUser);
+            Blab blab = new Blab("initial test blab", mockUser);
+            
             //Act
             _harness.Add(blab);
             ArrayList actual = (ArrayList)_harness.GetByUserId(email);
+
             //Assert
             Assert.AreEqual(1, actual.Count);
         }

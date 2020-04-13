@@ -18,8 +18,10 @@ namespace BlabberApp.DomainTest.Entities
             // Arrange
             string expected = "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."; 
             harness.Message = "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...";
+            
             // Act
             string actual = harness.Message;
+
             // Assert
             Assert.AreEqual(actual, expected);
         }
@@ -29,8 +31,10 @@ namespace BlabberApp.DomainTest.Entities
         {
             // Arrange
             Guid expected = harness.Id;
+
             // Act
             Guid actual = harness.Id;
+
             // Assert
             Assert.AreEqual(actual, expected);
             Assert.AreEqual(true, harness.Id is Guid);
@@ -41,8 +45,10 @@ namespace BlabberApp.DomainTest.Entities
         {
             // Arrange
             Blab Expected = new Blab();
+
             // Act
             Blab Actual = new Blab();
+
             // Assert
             Assert.AreEqual(Expected.DTTM.ToString(), Actual.DTTM.ToString());
         }

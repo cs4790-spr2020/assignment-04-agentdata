@@ -12,8 +12,9 @@ namespace BlabberApp.DomainTest.Entities
         {
             // Arrange
             User harness = new User(); 
-            string expected = "foobar@example.com";
-            harness.ChangeEmail("foobar@example.com");
+            string expected = "hooha@example.com";
+            harness.ChangeEmail("hooha@example.com");
+
             // Act
             string actual = harness.Email; // Assert
             Assert.AreEqual(actual.ToString(), expected.ToString());
@@ -25,7 +26,8 @@ namespace BlabberApp.DomainTest.Entities
             User harness = new User(); 
             
             // Act
-            var ex = Assert.ThrowsException<FormatException>(() => harness.ChangeEmail("Foobar"));
+            var ex = Assert.ThrowsException<FormatException>(() => harness.ChangeEmail("somethingnew"));
+
             // Assert
             Assert.AreEqual("Email is invalid", ex.Message.ToString());
         }
@@ -34,8 +36,10 @@ namespace BlabberApp.DomainTest.Entities
         {
             // Arrange
             User harness = new User(); 
+
             // Act
             var ex = Assert.ThrowsException<FormatException>(() => harness.ChangeEmail("example.com"));
+
             // Assert
             Assert.AreEqual("Email is invalid", ex.Message.ToString());
         }
@@ -44,8 +48,10 @@ namespace BlabberApp.DomainTest.Entities
         {
             // Arrange
             User harness = new User(); 
+
             // Act
-            var ex = Assert.ThrowsException<FormatException>(() => harness.ChangeEmail("foobar.example"));
+            var ex = Assert.ThrowsException<FormatException>(() => harness.ChangeEmail("somethingnew.example"));
+
             // Assert
             Assert.AreEqual("Email is invalid", ex.Message.ToString());
         }
@@ -55,8 +61,10 @@ namespace BlabberApp.DomainTest.Entities
             // Arrange
             User harness = new User();
             Guid expected = harness.Id;
+
             // Act
             Guid actual = harness.Id;
+
             // Assert
             Assert.AreEqual(actual, expected);
             Assert.AreEqual(true, harness.Id is Guid);

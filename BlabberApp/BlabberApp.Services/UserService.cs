@@ -35,9 +35,23 @@ namespace BlabberApp.Services
             return new User(email);
         }
 
+        public void RemoveUser(string email)
+        {
+            User userToRemove = _adapter.GetByEmail(email);
+            _adapter.Remove(userToRemove);
+        }
+
         public User FindUser(string email)
         {
             return _adapter.GetByEmail(email);
+        }
+
+        public bool CheckDuplicateEmail(string email)
+        {
+            if(_adapter.GetByEmail(email) == null)
+                return false;
+            else
+                return true;
         }
     }
 }

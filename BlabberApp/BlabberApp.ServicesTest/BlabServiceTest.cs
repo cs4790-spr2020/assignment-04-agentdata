@@ -25,8 +25,10 @@ namespace BlabberApp.ServicesTest
             //Arrange
             BlabService blabService = _blabServiceFactory.CreateBlabService();
             ArrayList expected = new ArrayList();
+            
             //Act
             IEnumerable actual = blabService.GetAll();
+
             //Assert
             Assert.AreEqual(expected.Count, (actual as ArrayList).Count);
         }
@@ -40,6 +42,7 @@ namespace BlabberApp.ServicesTest
             BlabService blabService = _blabServiceFactory.CreateBlabService();
             Blab blab = blabService.CreateBlab(msg, email);
             blabService.AddBlab(blab);
+
             //Act
             Blab actual = (Blab)blabService.FindUserBlabs(email);
             //Assert

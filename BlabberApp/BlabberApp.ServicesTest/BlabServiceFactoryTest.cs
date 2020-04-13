@@ -24,6 +24,7 @@ namespace BlabberApp.ServicesTest
         {
             //Arrange and Act
             BlabAdapter blabAdapter = harness.CreateBlabAdapter();
+            
             //Assert
             Assert.IsTrue(blabAdapter is BlabAdapter);
         }
@@ -32,6 +33,7 @@ namespace BlabberApp.ServicesTest
         {
             //Arrange and Act
             BlabService blabService = harness.CreateBlabService();
+
             //Assert
             Assert.IsTrue(blabService is BlabService);
         }

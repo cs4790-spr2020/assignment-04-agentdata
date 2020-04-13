@@ -25,8 +25,10 @@ namespace BlabberApp.ServicesTest
             //Arrange
             UserService userService = _userServiceFactory.CreateUserService();
             ArrayList expected = new ArrayList();
+
             //Act
             IEnumerable actual = userService.GetAll();
+
             //Assert
             Assert.AreEqual(expected.Count, (actual as ArrayList).Count);
         }
@@ -35,12 +37,14 @@ namespace BlabberApp.ServicesTest
         public void AddNewUserSuccessTest()
         {
             //Arrange
-            string email = "user@example.com"; 
+            string email = "user1@newdomain.com"; 
             UserService userService = _userServiceFactory.CreateUserService();
             User expected = userService.CreateUser(email);
             userService.AddNewUser(email);
+
             //Act
             User actual = userService.FindUser(email);
+
             //Assert
             Assert.AreEqual(expected.Email, actual.Email);
         }
