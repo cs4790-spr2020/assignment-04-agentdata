@@ -131,7 +131,18 @@ namespace BlabberApp.DataStore.Plugins
 
         public void Delete(IEntity obj)
         {
-            Blab blab = (Blab)obj;
+            Console.WriteLine("\n ID IS: "+obj.Id.ToString()+"\n");
+            try
+            {
+                string sql = "DELETE FROM blabs WHERE blabs.sys_id = '" + obj.Id.ToString() + "'";
+                MySqlCommand cmd = new MySqlCommand(sql, this.dcBlab);
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.ToString());
+            }
         }
     }
 }

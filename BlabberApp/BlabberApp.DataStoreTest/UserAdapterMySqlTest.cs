@@ -50,7 +50,7 @@ namespace BlabberApp.DataStoreTest
         public void TestAddAndGetAll()
         {
             //Arrange
-            _user.RegisterDTTM =DateTime.Now;
+            _user.RegisterDTTM = DateTime.Now;
             _user.LastLoginDTTM = DateTime.Now;
             _harness.Add(_user);
 

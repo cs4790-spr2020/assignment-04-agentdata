@@ -26,7 +26,7 @@ namespace BlabberApp.DomainTest.Entities
             User harness = new User(); 
             
             // Act
-            var ex = Assert.ThrowsException<FormatException>(() => harness.ChangeEmail("somethingnew"));
+            var ex = Assert.ThrowsException<FormatException>(() => harness.ChangeEmail("Email"));
 
             // Assert
             Assert.AreEqual("Email is invalid", ex.Message.ToString());
@@ -38,19 +38,7 @@ namespace BlabberApp.DomainTest.Entities
             User harness = new User(); 
 
             // Act
-            var ex = Assert.ThrowsException<FormatException>(() => harness.ChangeEmail("example.com"));
-
-            // Assert
-            Assert.AreEqual("Email is invalid", ex.Message.ToString());
-        }
-        [TestMethod]
-        public void TestSetGetEmail_Fail02()
-        {
-            // Arrange
-            User harness = new User(); 
-
-            // Act
-            var ex = Assert.ThrowsException<FormatException>(() => harness.ChangeEmail("somethingnew.example"));
+            var ex = Assert.ThrowsException<FormatException>(() => harness.ChangeEmail("Email"));
 
             // Assert
             Assert.AreEqual("Email is invalid", ex.Message.ToString());

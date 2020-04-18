@@ -20,6 +20,7 @@ namespace BlabberApp.DataStoreTest
         [TestMethod]
         public void TestAddAndGetBlab()
         {
+            
             //Arrange
             string email = "jojo@andthecoons.com";
             User mockUser = new User(email);
@@ -31,6 +32,7 @@ namespace BlabberApp.DataStoreTest
 
             //Assert
             Assert.AreEqual(1, actual.Count);
+            _harness.Remove(blab);
         }
     }
 }
