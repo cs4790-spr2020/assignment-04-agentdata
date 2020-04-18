@@ -1,6 +1,4 @@
-#H1 BlabberApp a Twitter-like .NETcore class project
-
-#H2 Assignment 04 (90 points)
+# Assignment 04 (90 points)
 
 - Create a SQLServer concrete class. (30 points)
 - Write unit-tests for SQLServer. (30 points)
